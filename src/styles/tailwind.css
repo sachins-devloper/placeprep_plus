@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #2563EB; /* Deep blue (primary) - blue-600 */
+    --color-primary-50: #EFF6FF; /* Light blue (50-level shade) - blue-50 */
+    --color-primary-100: #DBEAFE; /* Light blue (100-level shade) - blue-100 */
+    --color-primary-500: #3B82F6; /* Medium blue (500-level shade) - blue-500 */
+    --color-primary-700: #1D4ED8; /* Dark blue (700-level shade) - blue-700 */
+    --color-primary-900: #1E3A8A; /* Darker blue (900-level shade) - blue-900 */
+
+    /* Secondary Colors */
+    --color-secondary: #059669; /* Growth-oriented green (secondary) - emerald-600 */
+    --color-secondary-50: #ECFDF5; /* Light green (50-level shade) - emerald-50 */
+    --color-secondary-100: #D1FAE5; /* Light green (100-level shade) - emerald-100 */
+    --color-secondary-500: #10B981; /* Medium green (500-level shade) - emerald-500 */
+    --color-secondary-700: #047857; /* Dark green (700-level shade) - emerald-700 */
+
+    /* Accent Colors */
+    --color-accent: #DC2626; /* Strategic red (accent) - red-600 */
+    --color-accent-50: #FEF2F2; /* Light red (50-level shade) - red-50 */
+    --color-accent-100: #FEE2E2; /* Light red (100-level shade) - red-100 */
+    --color-accent-500: #EF4444; /* Medium red (500-level shade) - red-500 */
+
+    /* Background Colors */
+    --color-background: #FAFBFC; /* Soft neutral background - slate-50 */
+    --color-surface: #FFFFFF; /* Pure white surface - white */
+
+    /* Text Colors */
+    --color-text-primary: #1F2937; /* Rich charcoal primary text - gray-800 */
+    --color-text-secondary: #6B7280; /* Balanced gray secondary text - gray-500 */
+
+    /* Status Colors */
+    --color-success: #10B981; /* Vibrant green for achievements - emerald-500 */
+    --color-success-50: #ECFDF5; /* Light success background - emerald-50 */
+    --color-success-100: #D1FAE5; /* Light success border - emerald-100 */
+
+    --color-warning: #F59E0B; /* Warm amber for caution - amber-500 */
+    --color-warning-50: #FFFBEB; /* Light warning background - amber-50 */
+    --color-warning-100: #FEF3C7; /* Light warning border - amber-100 */
+
+    --color-error: #EF4444; /* Clear red for validation errors - red-500 */
+    --color-error-50: #FEF2F2; /* Light error background - red-50 */
+    --color-error-100: #FEE2E2; /* Light error border - red-100 */
+
+    /* Border Colors */
+    --color-border: #E5E7EB; /* Minimal border color - gray-200 */
+    --color-border-light: #F3F4F6; /* Light border variant - gray-100 */
+
+    /* Shadow Colors */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+    /* Animation Timing */
+    --timing-fast: 150ms;
+    --timing-normal: 300ms;
+    --timing-slow: 500ms;
+    --easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-text-primary font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Navigation Components */
+  .nav-tab {
+    @apply flex flex-col items-center justify-center px-3 py-2 text-sm font-medium transition-all duration-150 ease-smooth;
+    @apply text-text-secondary hover:text-primary active:scale-[1.02];
+    min-height: 48px;
+  }
+
+  .nav-tab.active {
+    @apply text-primary;
+  }
+
+  .nav-tab-icon {
+    @apply mb-1;
+  }
+
+  .nav-header {
+    @apply bg-surface border-b border-border px-4 py-3 flex items-center justify-between;
+    height: 64px;
+  }
+
+  /* Progress Indicators */
+  .progress-ring {
+    @apply relative inline-flex items-center justify-center;
+  }
+
+  .progress-bar {
+    @apply w-full bg-gray-200 rounded-full h-2 overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-secondary to-success transition-all duration-300 ease-smooth;
+  }
+
+  /* Interactive Elements */
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-md font-medium transition-all duration-150 ease-smooth;
+    @apply hover:bg-primary-700 active:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-md font-medium transition-all duration-150 ease-smooth;
+    @apply hover:bg-secondary-700 active:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
+  }
+
+  /* Card Components */
+  .card {
+    @apply bg-surface rounded-lg border border-border p-6 shadow-sm;
+  }
+
+  .card-elevated {
+    @apply bg-surface rounded-lg border border-border p-6 shadow-lg;
+  }
+
+  /* Form Elements */
+  .form-input {
+    @apply w-full px-3 py-2 border border-border rounded-md bg-surface text-text-primary;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply transition-all duration-150 ease-smooth;
+  }
+
+  /* Status Indicators */
+.badge-success  {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100;
+  }
+.badge-warning  {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning-100;
+  }
+.badge-error  {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-error-100;
+  }
+}
+
+@layer utilities {
+  /* Animation Utilities */
+  .animate-fade-in {
+    animation: fadeIn var(--timing-normal) var(--easing-smooth);
+  }
+
+  .animate-slide-up {
+    animation: slideUp var(--timing-normal) var(--easing-smooth);
+  }
+
+  .animate-scale-in {
+    animation: scaleIn var(--timing-fast) var(--easing-smooth);
+  }
+
+  /* Custom Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Spacing Utilities */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  /* Layout Utilities */
+  .content-with-nav {
+    @apply pb-20 lg:pb-0 lg:pl-64;
+  }
+
+  .content-with-header {
+    @apply pt-16;
+  }
+
+  /* Focus Utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+}
